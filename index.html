@@ -1,0 +1,202 @@
+<!--
+    Twórca: Konrad Pepliński
+    Klasa: 3TPM
+    ABOUT: Dodatek do GeneratorQR.py
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kod QR - Strona informacyjna</title>
+    <style>
+        /* Resetowanie domyślnych styli dla stron */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Nagłówek strony */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Kontener dla całej zawartości */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Menu */
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            padding: 10px;
+        }
+
+        /* Style dla obszaru treści */
+        .content {
+            max-width: 800px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        /* Styl dla hamburger menu na urządzeniach mobilnych */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Media queries dla menu na urządzeniach mobilnych */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* Styl dla aktywnego elementu menu */
+        nav ul li a.active {
+            color: rgb(187, 133, 17); /* Możesz dostosować kolor do swoich preferencji */
+        }
+
+        footer {
+            background-color: #333; /* Jasnobrązowy kolor tła */
+            padding: 10px;
+            text-align: center;
+            color: #fff; /* Kolor tekstu stopki */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Nagłówek -->
+    <header>
+        <h1>Kod QR - Informacje i zastosowania</h1>
+    </header>
+
+    <!-- Menu -->
+    <nav>
+        <div class="container">
+            <span class="hamburger">&#9776;</span>
+            <ul>
+                <li><a href="#history">Historia</a></li>
+                <li><a href="#usage">Zastosowanie</a></li>
+                <li><a href="#about">O kodzie QR</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Treść strony -->
+    <div class="container">
+        <div id="history" class="content">
+            <h2>Historia kodu QR</h2>
+            <p>
+                Kody QR, znane również jako Quick Response Codes, powstały w 1994 roku w Japonii dzięki firmie Denso Wave, filii koncernu Toyota. Ich pierwotnym zastosowaniem było oznaczanie elementów w procesie produkcji samochodów, jednak szybko znalazły szersze zastosowanie.
+
+                Kody QR zostały udostępnione publicznie, co umożliwiło ich wykorzystanie w różnych dziedzinach. Wkrótce po swoim wprowadzeniu stały się popularne w marketingu, logistyce, śledzeniu produktów oraz transakcjach finansowych.
+            </p>
+        </div>
+
+        <div id="usage" class="content">
+            <h2>Zastosowanie w dzisiejszych czasach</h2>
+            <p>Wszechstronność kodów QR przyczyniła się do ich powszechnego zastosowania w różnych obszarach. W marketingu są wykorzystywane do linkowania do stron internetowych, promowania produktów, udostępniania kuponów rabatowych czy prezentacji treści multimedialnych.
+
+                W biznesie, kody QR usprawniają procesy logistyczne, identyfikując produkty, zarządzając zapasami i umożliwiając dostęp do szczegółowych informacji o produktach dla klientów.
+                
+                W transakcjach finansowych, umożliwiają płatności mobilne, rezerwacje oraz przekazywanie informacji płatniczych.
+                
+                W sektorze zdrowia, kody QR przechowują informacje medyczne pacjentów, ułatwiają identyfikację, rejestrowanie historii chorób czy udostępnianie porad zdrowotnych.
+            </p>
+        </div>
+
+        <div id="about" class="content">
+            <h2>O kodzie QR</h2>
+            <p>
+                Kody QR składają się z trzech głównych elementów: znacznika, obszaru danych i obszaru korekcji błędów. Znacznik pomaga w identyfikacji kodu, obszar danych zawiera informacje, a obszar korekcji błędów umożliwia odczytanie kodu w przypadku uszkodzeń.
+
+                Odczytywanie kodów QR odbywa się za pomocą aplikacji na smartfony, które analizują wzorce kwadratów i konwertują je na dane.
+
+                Kody QR mogą przechowywać różnorodne dane, od URL-i i tekstu do informacji biznesowych czy kontaktów. Ich pojemność informacyjna zależy od wersji i trybu kodu, a standardowo mogą przechowywać do kilkuset znaków.
+
+                Ewolucja kodów QR doprowadziła do powstania niestandardowych formatów, takich jak dynamiczne kody QR czy te z wbudowanymi logikami, zwiększając ich elastyczność i funkcjonalność w komunikacji, marketingu, logistyce i wielu innych dziedzinach.
+            </p>
+        </div>
+        
+        <div><p style="font-size: 30px;">Zapraszam na mojego githuba :)</p></div>
+
+        <div id="qrCODE">
+            <img src="media/qr_github.jpg" alt="">
+        </div>
+    </div>
+
+    <footer>
+        &copy; Konrad Pepliński 2023
+    </footer>
+
+    <script>
+        // Dodanie płynnego przewijania do sekcji na kliknięcie elementów menu
+        document.querySelectorAll('nav ul li a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href').substring(1); // Pobranie identyfikatora sekcji
+                const targetSection = document.getElementById(targetId); // Pobranie elementu sekcji
+
+                if (targetSection) {
+                    // Obliczenie odległości do sekcji
+                    const offsetTop = targetSection.offsetTop;
+                    const offsetLeft = targetSection.offsetLeft;
+
+                    // Płynne przewijanie do sekcji
+                    window.scrollTo({
+                        top: offsetTop,
+                        left: offsetLeft,
+                        behavior: 'smooth'
+                    });
+
+                    // Zaznaczenie aktywnego elementu menu
+                    document.querySelectorAll('nav ul li a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+
+                    // Schowanie menu na urządzeniach mobilnych po kliknięciu
+                    const navUL = document.querySelector('nav ul');
+                    navUL.classList.remove('active');
+                }
+            });
+        });
+
+        // Skrypt obsługujący rozwijane menu na urządzeniach mobilnych
+        const hamburger = document.querySelector('.hamburger');
+        const navUL = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navUL.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
