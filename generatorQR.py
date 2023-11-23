@@ -19,7 +19,7 @@ class QRCodeGenerator:
     '''Klasa do generowania kodów QR.'''
 
     def __init__(self):
-        '''Inicjalizacja okna głównego aplikacji.'''
+        '''Inicjalizacja okna głównego aplikacji'''
         self.root = tk.Tk()
         self.root.title("Generator kodów QR")
         self.root.geometry("350x350")
